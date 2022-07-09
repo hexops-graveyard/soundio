@@ -874,6 +874,16 @@ SOUNDIO_EXPORT struct SoundIoDevice *soundio_get_input_device(struct SoundIo *so
 /// invalid parameter values.
 SOUNDIO_EXPORT struct SoundIoDevice *soundio_get_output_device(struct SoundIo *soundio, int index);
 
+/// Always returns a device. Call ::soundio_device_unref when done.
+/// Returns NULL if you never called ::soundio_flush_events or if you provide
+/// invalid parameter values.
+SOUNDIO_EXPORT struct SoundIoDevice* soundio_get_input_device_from_id(struct SoundIo* soundio, const char* id, bool is_raw);
+
+/// Always returns a device. Call ::soundio_device_unref when done.
+/// Returns NULL if you never called ::soundio_flush_events or if you provide
+/// invalid parameter values.
+SOUNDIO_EXPORT struct SoundIoDevice* soundio_get_output_device_from_id(struct SoundIo* soundio, const char* id, bool is_raw);
+
 /// returns the index of the default input device
 /// returns -1 if there are no devices or if you never called
 /// ::soundio_flush_events.
