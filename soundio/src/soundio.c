@@ -401,7 +401,7 @@ struct SoundIoDevice* soundio_get_input_device_from_id(struct SoundIo* soundio, 
 
     for (int i = 0; i < si->safe_devices_info->input_devices.length; i += 1) {
         struct SoundIoDevice* device = SoundIoListDevicePtr_val_at(&si->safe_devices_info->input_devices, i);
-        if (strcmp(device->id, id) != 0 && device->is_raw == is_raw) {
+        if (strcmp(device->id, id) == 0 && device->is_raw == is_raw) {
             soundio_device_ref(device);
             return device;
         }
@@ -424,7 +424,7 @@ struct SoundIoDevice* soundio_get_output_device_from_id(struct SoundIo* soundio,
 
     for (int i = 0; i < si->safe_devices_info->output_devices.length; i += 1) {
         struct SoundIoDevice* device = SoundIoListDevicePtr_val_at(&si->safe_devices_info->output_devices, i);
-        if (strcmp(device->id, id) != 0 && device->is_raw == is_raw) {
+        if (strcmp(device->id, id) == 0 && device->is_raw == is_raw) {
             soundio_device_ref(device);
             return device;
         }
